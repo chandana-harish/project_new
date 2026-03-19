@@ -20,5 +20,5 @@ spec:
               replacePrefixMatch: /flower
       backendRefs:
         - name: flower-ser
-          port: 3015
+          port: 3016
     

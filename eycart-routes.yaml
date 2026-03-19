@@ -20,5 +20,5 @@ spec:
               replacePrefixMatch: /ey
       backendRefs:
         - name: ey-ser
-          port: 3000
+          port: 3001
     
