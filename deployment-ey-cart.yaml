@@ -35,7 +35,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ey-service
+  name: ey-ser
   namespace: chandana-ns
 spec:
   selector:
