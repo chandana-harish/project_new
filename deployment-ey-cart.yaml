@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Deployment-eycart
+  namespace: chandana-ns
+
+spec:
+  replicas: 1 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: ey
+  template:
+    metadata:
+      labels: 
+        app: ey
+    spec: 
+      containers:
+      - name: ey-container
+        image: muralisocial123/ey-cart:v1.1.0
+        ports: 
+        - containerPort: 3001
+        resources:
+          requests: 
+            memory: "128Mi"
+            cpu: "50m"
+          limits: 
+            memory: "256Mi"
+            cpu: "100m"
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: ey-service
+  namespace: chandana-ns
+spec:
+  selector:
+    app: ey
+  ports:
+  - port: 3001
+    targetPort: 3000
+  type: ClusterPort

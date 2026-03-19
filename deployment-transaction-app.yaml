@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Deployment-transaction
+  namespace: chandana-ns
+
+spec:
+  replicas: 1 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: trans
+  template:
+    metadata:
+      labels: 
+        app: trans
+    spec: 
+      containers:
+      - name: trans-container
+        image: muralisocial123/transaction-app:v1.0.0
+        ports: 
+        - containerPort: 3002
+        resources:
+          requests: 
+            memory: "128Mi"
+            cpu: "50m"
+          limits: 
+            memory: "256Mi"
+            cpu: "100m"
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: trans-service
+  namespace: chandana-ns
+spec:
+  selector:
+    app: trans
+  ports:
+  - port: 3002
+    targetPort: 3000
+  type: ClusterPort
