@@ -11,13 +11,13 @@ spec:
     - matches:
       - path:
           type: PathPrefix
-          value: /
+          value: /ey
       filters:
         - type: URLRewrite
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replacePrefixMatch: /
+              replacePrefixMatch: /ey
       backendRefs:
         - name: ey-ser
           port: 3000
