@@ -43,4 +43,4 @@ spec:
   ports:
   - port: 3016
     targetPort: 3015
-  type: ClusterPort
+  type: ClusterIP

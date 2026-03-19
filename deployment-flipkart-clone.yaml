@@ -43,4 +43,4 @@ spec:
   ports:
   - port: 81
     targetPort: 80
-  type: ClusterPort
+  type: ClusterIP
